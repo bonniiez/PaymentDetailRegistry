@@ -1,10 +1,15 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore;
+
 namespace PaymentDetailsRegistry.Models
 {
-    public class PaymentDetailContext
+    public class PaymentDetailContext : DbContext
     {
-        public PaymentDetailContext()
+        public PaymentDetailContext(DbContextOptions<PaymentDetailContext> options)
+            : base(options)
         {
         }
+
+        public DbSet<PaymentDetail> PaymentDetails { get; set; }
     }
 }

@@ -1,0 +1,33 @@
+﻿<Properties StartupConfiguration="{A6F418AC-8862-4609-B925-2990BC641F21}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PaymentDetailsRegistry/Models/PaymentDetail.cs">
+    <Files>
+      <File FileName="PaymentDetailsRegistry/Startup.cs" Line="45" Column="29" />
+      <File FileName="PaymentDetailsRegistry/Program.cs" Line="1" Column="1" />
+      <File FileName="PaymentDetailsRegistry/Models/PaymentDetailContext.cs" Line="13" Column="35" />
+      <File FileName="PaymentDetailsRegistry/Controllers/WeatherForecastController.cs" Line="1" Column="1" />
+      <File FileName="PaymentDetailsRegistry/Models/PaymentDetail.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Option id="ShowAllFiles" value="True" />
+          <Node name="PaymentDetailsRegistry" expanded="True">
+            <Node name="PaymentDetailsRegistry" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="PaymentDetail.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.PaymentDetailsRegistry FirstBuild="True" PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
