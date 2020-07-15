@@ -6,12 +6,13 @@ import {HttpClient} from "@angular/common/http"
   providedIn: 'root'
 })
 export class PaymentDetailService {
-  formData: PaymentDetail
+  formData: PaymentDetail;
+  readonly rootURL = 'https://localhost:5001/api'
   
 
   constructor(private http:HttpClient) { }
 
   postPaymentDetail(formData: PaymentDetail){
-
+    return this.http.post(this.rootURL+'/PaymentDetail', formData)
   }
 }
