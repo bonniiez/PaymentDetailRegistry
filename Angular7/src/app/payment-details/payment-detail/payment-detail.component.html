@@ -1,65 +1,80 @@
 <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
-<div class="form-group">
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <div class="input-group-text bg-white">
-                <i class="fas fa-user-circle" [class.green-icon]="CardOwnerName.valid" [class.red-icon]="CardOwnerName.invalid && CardOwnerName.touched"></i>
-            </div>
-        </div>
-        <input  name="CardOwnerName" #CardOwnerName="ngModel" [(ngModel)]="service.formData.CardOwnerName" class="form-control" placeholder="Card Holder Name" required>
-    </div>
-    <div class="alert alert-danger" *ngIf="CardOwnerName.touched && !CardOwnerName.valid">
-        <div *ngIf="CardOwnerName.errors.required">Card Owner Name is required.</div>
-    </div>
-</div>
-<div class="form-group">
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <div class="input-group-text bg-white">
-                <i class="far fa-credit-card" [class.green-icon]="CardNumber.valid" [class.red-icon]="CardNumber.invalid && CardNumber.touched"></i>
-            </div>
-        </div>
-        <input (change)=log(CardNumber) name="CardNumber" #CardNumber="ngModel" [(ngModel)]="service.formData.CardNumber" class="form-control" placeholder="16 Digit Card Number" required maxlength="16" minlength="16">
-    </div>
-    <div class="alert alert-danger" *ngIf="CardNumber.touched &&!CardNumber.valid">
-        <div *ngIf=CardNumber.errors.required>Card Number is required.</div>
-        <div *ngIf=" CardNumber.errors.minlength.actualLength != CardNumber.errors.minlength.requiredLength">Card Number needs to be 16 characters.</div>
-    </div>
-</div>
-<div class="form-row">
-    <div class="form-group col-md-7">
+    <input type="hidden" name="PMid" [value]="service.formData.PMid">
+    <div class="form-group">
         <div class="input-group">
             <div class="input-group-prepend">
                 <div class="input-group-text bg-white">
-                    <i class="far fa-calendar-alt" [class.green-icon]="ExpirationDate.valid" [class.red-icon]="ExpirationDate.invalid && ExpirationDate.touched"></i>
+                    <i class="fas fa-user-circle" [class.green-icon]="CardOwnerName.valid" [class.red-icon]="CardOwnerName.invalid && 
+                        CardOwnerName.touched"></i>
                 </div>
             </div>
-            <input (change)=log(ExpirationDate) name="ExpirationDate" #ExpirationDate="ngModel" [(ngModel)]="service.formData.ExpirationDate" class="form-control" placeholder="MM/YY" required maxlength="5" minlength="5">
+            <input name="CardOwnerName" #CardOwnerName="ngModel" [(ngModel)]="service.formData.CardOwnerName"
+                class="form-control" placeholder="Card Holder Name" required>
         </div>
-        <div class="alert alert-danger" *ngIf="ExpirationDate.touched &&!ExpirationDate.valid">    
-            <div *ngIf=ExpirationDate.errors.required>Expiration Date is required.</div>
-            <div *ngIf=" ExpirationDate.errors.minlength.actualLength != ExpirationDate.errors.minlength.requiredLength">Expiration Date needs to be 5 characters.</div>
+        <div class="alert alert-danger" *ngIf="CardOwnerName.touched && !CardOwnerName.valid">
+            <div *ngIf="CardOwnerName.errors.required">Card Owner Name is required.</div>
         </div>
-
     </div>
-    <div class="form-group col-md-5">
+    <div class="form-group">
         <div class="input-group">
             <div class="input-group-prepend">
                 <div class="input-group-text bg-white">
-                    <i class="fas fa-key" [class.green-icon]="CVV.valid" [class.red-icon]="CVV.invalid && CVV.touched"></i>
+                    <i class="far fa-credit-card" [class.green-icon]="CardNumber.valid"
+                        [class.red-icon]="CardNumber.invalid && CardNumber.touched"></i>
                 </div>
             </div>
-            <input type="password" name="CVV" #CVV="ngModel" [(ngModel)]="service.formData.CVV" class="form-control" placeholder="CVV" required maxlength="3" minlength="3">
+            <input (change)=log(CardNumber) name="CardNumber" #CardNumber="ngModel"
+                [(ngModel)]="service.formData.CardNumber" class="form-control" placeholder="16 Digit Card Number"
+                required maxlength="16" minlength="16">
         </div>
-        <div class="alert alert-danger" *ngIf="CVV.touched &&!CVV.valid">
-            <div *ngIf="CVV.errors.required"> CVV is required.</div>
-            <div *ngIf="CVV.errors.minlength.actualLength != CVV.errors.minlength.requiredLength"> CVV needs to be 3 characters.</div>
+        <div class="alert alert-danger" *ngIf="CardNumber.touched &&!CardNumber.valid">
+            <div *ngIf=CardNumber.errors.required>Card Number is required.</div>
+            <div *ngIf=" CardNumber.errors.minlength.actualLength != CardNumber.errors.minlength.requiredLength">Card
+                Number needs to be {{CardNumber.errors.minlength.requiredLength}} characters.</div>
         </div>
-
     </div>
-</div>
-<div class="form-group">
-    <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">
-        <i class="fas fa-database"></i>Submit</button>
-</div>
+    <div class="form-row">
+        <div class="form-group col-md-7">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                        <i class="far fa-calendar-alt" [class.green-icon]="ExpirationDate.valid"
+                            [class.red-icon]="ExpirationDate.invalid && ExpirationDate.touched"></i>
+                    </div>
+                </div>
+                <input (change)=log(ExpirationDate) name="ExpirationDate" #ExpirationDate="ngModel"
+                    [(ngModel)]="service.formData.ExpirationDate" class="form-control" placeholder="MM/YY" required
+                    maxlength="5" minlength="5">
+            </div>
+            <div class="alert alert-danger" *ngIf="ExpirationDate.touched &&!ExpirationDate.valid">
+                <div *ngIf=ExpirationDate.errors.required>Expiration Date is required.</div>
+                <div
+                    *ngIf=" ExpirationDate.errors.minlength.actualLength != ExpirationDate.errors.minlength.requiredLength">
+                    Expiration Date needs to be {{ExpirationDate.errors.minlength.requiredLength}} characters.</div>
+            </div>
+
+        </div>
+        <div class="form-group col-md-5">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                        <i class="fas fa-key" [class.green-icon]="CVV.valid"
+                            [class.red-icon]="CVV.invalid && CVV.touched"></i>
+                    </div>
+                </div>
+                <input type="password" name="CVV" #CVV="ngModel" [(ngModel)]="service.formData.CVV" class="form-control"
+                    placeholder="CVV" required maxlength="3" minlength="3">
+            </div>
+            <div class="alert alert-danger" *ngIf="CVV.touched &&!CVV.valid">
+                <div *ngIf="CVV.errors.required"> CVV is required.</div>
+                <div *ngIf="CVV.errors.minlength.actualLength != CVV.errors.minlength.requiredLength"> CVV needs to be
+                    {{CVV.errors.minlength.requiredLength}} characters.</div>
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">
+            <i class="fas fa-database"></i>Submit</button>
+    </div>
 </form>
