@@ -31,4 +31,9 @@ export class PaymentDetailService {
       ]
     )
   }
+
+  updatePaymentDetails(){
+    // console.log("formData.PMid" + this.formData.PMid); // formData.PMid gives undefined, need this in front 
+    return this.http.put(this.rootURL + '/PaymentDetail/'+this.formData.PMid, this.formData);
+  }
 }

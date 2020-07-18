@@ -33,22 +33,55 @@ export class PaymentDetailComponent implements OnInit {
   }
 
   onSubmit(form:NgForm){
-    this.service.postPaymentDetail(form.value).subscribe(
-      res =>{
-        console.log("response"+ res.toString);
-        this.resetForm(form)
-        this.toastr.success('Submitted successfully', 'Payment Detail Register');
-      },
-      err=>{
-        console.log(err)
-      }
-    )
+  //  var input = (<HTMLInputElement>document.getElementById('PMid')).value;
+  //   console.log("input",typeof(input));
+
+  //   var numberPMid = Number(input);
+  //   console.log("integer ", numberPMid);
+    
+  //   if (numberPMid != 0){
+  //     this.service.updatePaymentDetails(numberPMid,form.value);
+  //     this.resetForm(form);
+  //     this.service.refreshList();
+  //         this.toastr.success('updated successfully', 'Payment Detail Register');
+  //     console.log("updated payment details!")
+  //   } 
+  console.log("form.value.PMid: " +form.value.PMid);
+
+  if (form.value.PMid ==0){
+    this.insertRecord(form);
+  }else {
+    this.updateRecord(form);
+  }
+    
+    
 
   }
 
-  showSuccess() {
-    this.toastr.success('Hello world!', 'Toastr fun!');
-  }
+ insertRecord(form: NgForm ){
+  this.service.postPaymentDetail(form.value).subscribe(
+    res =>{
+      this.resetForm(form)
+      this.toastr.success('Submitted successfully', 'Payment Detail Register');
+    },
+    err=>{
+      console.log(err)
+    }
+  )
+ }
+
+ updateRecord(form: NgForm ){
+  this.service.updatePaymentDetails().subscribe(
+    res =>{
+      this.resetForm(form)
+      this.toastr.success('Updated successfully', 'Payment Detail Register');
+      this.service.refreshList();
+    },
+    err=>{
+      console.log(err)
+    }
+  )
+ }
 
   log(x:string){
 console.log(x);
