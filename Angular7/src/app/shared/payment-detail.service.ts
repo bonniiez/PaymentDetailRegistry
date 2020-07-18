@@ -13,19 +13,18 @@ export class PaymentDetailService {
 
   constructor(private http:HttpClient) { }
 
-  postPaymentDetail(formData: PaymentDetail){
-    return this.http.post(this.rootURL+'/PaymentDetail', formData)
+  postPaymentDetail(){
+    return this.http.post(this.rootURL+'/PaymentDetail', this.formData)
   }
 
   refreshList(){
     return this.http.get(this.rootURL + '/PaymentDetail')
     .toPromise() // convert observable to promise
     .then(
-      res=>{
-        
+      res=>{        
         this.list = res as PaymentDetail[]
-        console.log(this.list)
       },
+
       err=>[
         console.log(err)
       ]
@@ -35,5 +34,10 @@ export class PaymentDetailService {
   updatePaymentDetails(){
     // console.log("formData.PMid" + this.formData.PMid); // formData.PMid gives undefined, need this in front 
     return this.http.put(this.rootURL + '/PaymentDetail/'+this.formData.PMid, this.formData);
+  }
+
+  deletePaymentDetails(PMid:number){
+    console.log("deleted :" + PMid);
+    return this.http.delete(this.rootURL + '/PaymentDetail/' + PMid);
   }
 }

@@ -59,7 +59,7 @@ export class PaymentDetailComponent implements OnInit {
   }
 
  insertRecord(form: NgForm ){
-  this.service.postPaymentDetail(form.value).subscribe(
+  this.service.postPaymentDetail().subscribe(
     res =>{
       this.resetForm(form)
       this.toastr.success('Submitted successfully', 'Payment Detail Register');
@@ -82,9 +82,4 @@ export class PaymentDetailComponent implements OnInit {
     }
   )
  }
-
-  log(x:string){
-console.log(x);
-  }
-
 }
