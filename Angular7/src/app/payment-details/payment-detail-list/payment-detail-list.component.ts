@@ -19,7 +19,6 @@ export class PaymentDetailListComponent implements OnInit {
   }
 
   populateForm(pd: PaymentDetail) {
-    console.log("detail list pd", pd);
     this.service.formData = Object.assign({}, pd)
     // this.service.formData={
     //   PMid: pd.PMid,

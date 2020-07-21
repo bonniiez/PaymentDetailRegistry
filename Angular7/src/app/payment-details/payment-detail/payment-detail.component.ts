@@ -33,6 +33,7 @@ export class PaymentDetailComponent implements OnInit {
   }
 
   onSubmit(form:NgForm){
+    console.log("form.value.id: " + form.value.PMid);
   //  var input = (<HTMLInputElement>document.getElementById('PMid')).value;
   //   console.log("input",typeof(input));
 
@@ -46,9 +47,8 @@ export class PaymentDetailComponent implements OnInit {
   //         this.toastr.success('updated successfully', 'Payment Detail Register');
   //     console.log("updated payment details!")
   //   } 
-  console.log("form.value.PMid: " +form.value.PMid);
 
-  if (form.value.PMid ==0){
+  if (form.value.PMid == undefined){
     this.insertRecord(form);
   }else {
     this.updateRecord(form);
@@ -65,7 +65,7 @@ export class PaymentDetailComponent implements OnInit {
       this.toastr.success('Submitted successfully', 'Payment Detail Register');
     },
     err=>{
-      console.log(err)
+      console.log("error submitting payment detail")
     }
   )
  }
@@ -78,7 +78,7 @@ export class PaymentDetailComponent implements OnInit {
       this.service.refreshList();
     },
     err=>{
-      console.log(err)
+      console.log("error updating record")
     }
   )
  }

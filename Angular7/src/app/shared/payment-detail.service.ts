@@ -24,7 +24,6 @@ export class PaymentDetailService {
       res=>{        
         this.list = res as PaymentDetail[]
       },
-
       err=>[
         console.log(err)
       ]
@@ -37,7 +36,6 @@ export class PaymentDetailService {
   }
 
   deletePaymentDetails(PMid:number){
-    console.log("deleted :" + PMid);
     return this.http.delete(this.rootURL + '/PaymentDetail/' + PMid);
   }
 }
